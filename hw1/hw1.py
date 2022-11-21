@@ -21,6 +21,5 @@ print(sorted(list)[::2])
 
 # multiplii de 3
 for i in range(len(list)):
-    if (list[i] % 3 == 0):
+    if list[i] % 3 == 0:
         print(list[i], end=' ')
-
