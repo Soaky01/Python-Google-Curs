@@ -11,15 +11,16 @@ def check_control_digit(cnp):
     else:
         control_digit = sum % 11
     if control_digit != int(cnp[-1]):
-        raise "Cifra de control invalida"
+        return "Cifra de control invalida"
 
 def check_NNN(cnp):
     if cnp[9:12].isdigit() and int((cnp)[9:12]) >= 1:
         pass
     else:
-        raise "NNN Not Valid"
+        return "NNN Not Valid"
 
 def county_check(cnp):
+
     counties = ["%.2d" % i for i in range(1,47)]
     counties.append('51')
     counties.append('52')
@@ -27,7 +28,7 @@ def county_check(cnp):
     if inserted_county in counties:
         pass
     else:
-        raise 'cod judet invalid'
+        return 'cod judet invalid'
 
 def check_cnp(cnp):
 
@@ -58,6 +59,6 @@ def check_cnp(cnp):
 #print(check_cnp('-211102018178'))
 #print(check_cnp('-211102018178asdd'))
 #print(check_cnp('6211102018174'))
-print(check_cnp('5200229986791'))
+print(check_cnp('5021101450006'))
 
 
