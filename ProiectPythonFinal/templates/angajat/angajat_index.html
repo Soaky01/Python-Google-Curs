@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+    <a class="btn btn-primary" href="{% url 'angajat:adaugare' %}">Adaugare Angajati</a>
+    <table class="table">
+    <thead>
+    <tr>
+        <th>Index</th>
+        <th>Nume</th>
+        <th>Prenume</th>
+        <th>Varsta</th>
+        <th>Domeniu</th>
+        <th>Salariu</th>
+        <th>Active</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in  angajat_list %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ item.nume }}</td>
+        <td>{{ item.prenume }}</td>
+        <td>{{ item.varsta }}</td>
+        <td>{{ item.domeniu }}</td>
+        <td>{{ item.salariu }}</td>
+        <td>
+            {% if item.active %}
+            Active
+            {% else %}
+            Inactiv
+            {% endif %}
+        </td>
+        <td>
+            <a class="btn btn-success" href="{% url 'angajat:modificare' item.id %}">Editare</a>
+            {% if item.active %}
+            <a class="btn btn-warning" href="{% url 'angajat:stergere' item.id %}">Stergere</a>
+            {% else %}
+            <a class="btn btn-warning" href="{% url 'angajat:activare' item.id %}">Activare</a>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
+{% endblock %}
